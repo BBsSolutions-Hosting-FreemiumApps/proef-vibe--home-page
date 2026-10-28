@@ -1,0 +1,533 @@
+/* ============================================================
+   De Vlerk Amphitours — stylesheet
+   Thema: water & auto. Kleuren: blauw/turquoise, warm oranje accent.
+   ============================================================ */
+
+:root {
+  --blauw-donker: #0b4f60;
+  --blauw: #0e7490;
+  --turquoise: #14b8c9;
+  --turquoise-licht: #a5eef4;
+  --turquoise-blink: #e6fbfd;
+  --accent: #f97316;
+  --accent-donker: #c2410c;
+  --tekst-donker: #123a45;
+  --tekst-licht: #f0fbfc;
+  --wit: #ffffff;
+  --grijs-achter: #f4fafb;
+  --rand: #d3edf0;
+  --radius: 18px;
+  --schaduw: 0 10px 30px rgba(11, 79, 96, .12);
+  --schaduw-hover: 0 16px 36px rgba(11, 79, 96, .2);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--tekst-donker);
+  background:
+    radial-gradient(1100px 500px at 110% -10%, var(--turquoise-licht), transparent 60%),
+    radial-gradient(900px 420px at -10% 25%, var(--turquoise-blink), transparent 55%),
+    var(--wit);
+}
+
+.container {
+  width: min(1120px, 92%);
+  margin-inline: auto;
+}
+
+img, svg { max-width: 100%; }
+
+/* ---------- Toegankelijkheid ---------- */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: .5rem;
+  z-index: 100;
+  background: var(--accent);
+  color: #fff;
+  padding: .7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  left: .5rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rand);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: .7rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  color: var(--blauw-donker);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: .01em;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+
+.brand-name span {
+  color: var(--turquoise);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--blauw);
+  font-weight: 600;
+  padding: .35rem .2rem;
+}
+
+.nav-list a:hover {
+  color: var(--accent-donker);
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--accent), #fb923c);
+  color: #fff !important;
+  padding: .55rem 1.1rem !important;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, .35);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, .45);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--tekst-licht);
+  background:
+    radial-gradient(700px 320px at 15% 20%, rgba(255, 255, 255, .16), transparent 60%),
+    linear-gradient(140deg, var(--blauw-donker) 0%, var(--blauw) 45%, var(--turquoise) 100%);
+  text-align: center;
+  padding: clamp(4rem, 10vw, 7.5rem) 0 clamp(7rem, 14vw, 10rem);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120px 120px at 82% 18%, rgba(251, 191, 36, .5), transparent 70%),
+    radial-gradient(60px 60px at 88% 12%, rgba(251, 191, 36, .9), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-waves {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 120px;
+  pointer-events: none;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wave-2 {
+  animation: golf 7s ease-in-out infinite alternate;
+  transform-origin: bottom;
+}
+
+.wave-1 {
+  animation: golf 9s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes golf {
+  from { transform: translateX(-1.5%); }
+  to   { transform: translateX(1.5%); }
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-kicker {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: .4rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .16);
+  border: 1px solid rgba(255, 255, 255, .35);
+  font-weight: 700;
+  letter-spacing: .05em;
+  font-size: .95rem;
+}
+
+.hero h1 {
+  margin: 0 0 .8rem;
+  font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+  line-height: 1.08;
+  text-shadow: 0 4px 22px rgba(4, 47, 58, .4);
+}
+
+.hero-vraag {
+  margin: 0 auto 1rem;
+  max-width: 22ch;
+  font-size: clamp(1.25rem, 3.4vw, 2rem);
+  font-weight: 800;
+  font-style: italic;
+  color: var(--turquoise-licht);
+}
+
+.hero-tekst {
+  margin: 0 0 2rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  opacity: .95;
+}
+
+/* ---------- Knoppen ---------- */
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .9rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .85rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.button-icoon {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+.button-accent {
+  background: linear-gradient(135deg, var(--accent), #fb923c);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(249, 115, 22, .4);
+}
+
+.button-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(249, 115, 22, .5);
+}
+
+.button-ghost {
+  background: rgba(255, 255, 255, .14);
+  color: var(--tekst-licht);
+  border: 2px solid rgba(255, 255, 255, .65);
+}
+
+.button-ghost:hover {
+  background: rgba(255, 255, 255, .26);
+  transform: translateY(-2px);
+}
+
+/* ---------- Intro ---------- */
+
+.intro {
+  padding: clamp(3rem, 7vw, 5rem) 0;
+}
+
+.intro-inner {
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) 1fr;
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.intro-tekst h2 {
+  margin: 0 0 1rem;
+  color: var(--blauw-donker);
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+}
+
+.intro-tekst p {
+  margin: 0 0 1rem;
+  font-size: 1.08rem;
+}
+
+.amfibie-illustratie {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--schaduw);
+  background: linear-gradient(180deg, var(--turquoise-blink), var(--turquoise-licht));
+}
+
+/* ---------- Gelegenheden / kaarten ---------- */
+
+.gelegenheden {
+  padding: clamp(3rem, 7vw, 5rem) 0;
+  background: linear-gradient(180deg, transparent, var(--grijs-achter) 15%, var(--grijs-achter) 85%, transparent);
+}
+
+.gelegenheden h2 {
+  text-align: center;
+  margin: 0 0 2.2rem;
+  color: var(--blauw-donker);
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+}
+
+.kaarten-grid {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1060px;
+}
+
+.kaart {
+  background: var(--wit);
+  border: 1px solid var(--rand);
+  border-radius: var(--radius);
+  padding: 1.7rem 1.5rem 1.6rem;
+  box-shadow: var(--schaduw);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.kaart::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--turquoise), var(--blauw));
+}
+
+.kaart:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--schaduw-hover);
+  border-color: var(--turquoise);
+}
+
+.kaart-icoon {
+  width: 56px;
+  height: 56px;
+  color: var(--blauw);
+  display: block;
+  margin-bottom: .9rem;
+}
+
+.kaart h3 {
+  margin: 0 0 .5rem;
+  color: var(--blauw-donker);
+  font-size: 1.25rem;
+}
+
+.kaart p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* ---------- CTA ---------- */
+
+.cta {
+  padding: clamp(3rem, 8vw, 5.5rem) 0;
+}
+
+.cta-inner {
+  text-align: center;
+  color: var(--tekst-licht);
+  background:
+    radial-gradient(500px 240px at 85% 10%, rgba(251, 191, 36, .25), transparent 65%),
+    linear-gradient(135deg, var(--blauw) 0%, var(--turquoise) 100%);
+  border-radius: calc(var(--radius) * 1.6);
+  padding: clamp(2rem, 6vw, 3.5rem) clamp(1.2rem, 5vw, 3rem);
+  box-shadow: var(--schaduw-hover);
+  max-width: 900px;
+}
+
+.cta h2 {
+  margin: 0 0 .8rem;
+  font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+}
+
+.cta p {
+  margin: 0 0 1.8rem;
+  font-size: 1.12rem;
+  max-width: 56ch;
+  margin-inline: auto;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: linear-gradient(160deg, var(--blauw-donker), #0a3d4b);
+  color: var(--tekst-licht);
+  padding-top: clamp(2.2rem, 5vw, 3.5rem);
+  margin-top: clamp(2rem, 6vw, 4rem);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-titel {
+  font-size: 1.1rem;
+  margin: 0 0 .8rem;
+  color: var(--turquoise-licht);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.footer-adres address {
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.footer-lijst {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.9;
+}
+
+.footer-lijst a {
+  color: var(--tekst-licht);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color .15s ease, color .15s ease;
+}
+
+.footer-lijst a:hover {
+  color: var(--turquoise-licht);
+  border-color: var(--accent);
+}
+
+.footer-onder {
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  padding-block: 1.1rem;
+  text-align: center;
+}
+
+.footer-onder p {
+  margin: 0;
+  font-size: .95rem;
+  opacity: .85;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .kaarten-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .intro-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-svg {
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .kaarten-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    gap: .4rem;
+    padding-block: .8rem;
+  }
+
+  .nav-list {
+    gap: .9rem;
+    font-size: .92rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .wave-1, .wave-2 {
+    animation: none;
+  }
+
+  .kaart, .button, .nav-cta {
+    transition: none;
+  }
+
+  .kaart:hover, .button:hover, .nav-cta:hover {
+    transform: none;
+  }
+}
